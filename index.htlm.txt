@@ -3,153 +3,147 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NeuroKids - Le cerveau pour les enfants</title>
+  <title>NeuroKids - Le cerveau animé</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
     body {
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      background: #f0f8ff;
-      color: #333;
+      font-family: 'Fredoka One', cursive, sans-serif;
+      background: linear-gradient(135deg, #a8edea, #fed6e3);
       margin: 0;
       padding: 0;
+      text-align: center;
+      color: #333;
     }
+
     header {
-      background: #4a90e2;
+      background: #ff6f91;
       color: white;
-      padding: 1em;
-      text-align: center;
-      font-size: 2em;
-      font-weight: bold;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      padding: 1.5em 0;
+      font-size: 3em;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
     }
+
     nav {
-      display: flex;
-      justify-content: center;
-      background: #357ABD;
-      padding: 0.5em;
+      margin: 20px 0;
     }
+
     nav button {
-      background: #6aa6ff;
+      background: #ff9a8b;
       border: none;
+      border-radius: 12px;
       color: white;
-      margin: 0 0.5em;
-      padding: 0.5em 1.2em;
-      border-radius: 8px;
-      font-size: 1em;
+      padding: 12px 24px;
+      margin: 0 10px;
+      font-size: 1.2em;
       cursor: pointer;
-      transition: background 0.3s;
+      box-shadow: 0 5px 10px rgba(255, 154, 139, 0.4);
+      transition: background 0.3s ease;
     }
+
     nav button:hover {
-      background: #8bb9ff;
+      background: #ff6f91;
+      box-shadow: 0 8px 15px rgba(255, 111, 145, 0.6);
     }
-    main {
-      max-width: 800px;
-      margin: 2em auto;
-      padding: 0 1em;
+
+    .welcome-text {
+      font-size: 1.5em;
+      margin-bottom: 40px;
+      color: #444;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    section {
-      display: none;
+
+    /* Animation du cerveau */
+    .brain {
+      margin: 0 auto 40px auto;
+      width: 200px;
+      height: 200px;
+      position: relative;
+      animation: pulse 3s ease-in-out infinite;
     }
-    section.active {
-      display: block;
+
+    /* Forme simplifiée d’un cerveau en CSS */
+    .brain::before,
+    .brain::after {
+      content: "";
+      position: absolute;
+      background: #ff9a8b;
+      border-radius: 50%;
+      width: 140px;
+      height: 140px;
+      top: 30px;
+      left: 30px;
+      box-shadow:
+        inset 20px 20px 30px #ff6f91,
+        0 10px 10px rgba(255, 111, 145, 0.5);
     }
-    h2 {
-      color: #357ABD;
-      margin-bottom: 0.5em;
+
+    .brain::after {
+      left: 90px;
+      background: #ffb3a7;
+      box-shadow:
+        inset 20px 20px 30px #ff7a6f,
+        0 10px 10px rgba(255, 111, 145, 0.5);
     }
-    .fact {
-      background: #d0e8ff;
-      margin: 0.7em 0;
-      padding: 1em;
-      border-radius: 10px;
-      box-shadow: 1px 1px 5px rgba(53,122,189,0.3);
-    }
-    .activity {
-      margin-bottom: 1em;
-      background: #e8f4ff;
-      border-radius: 10px;
-      padding: 1em;
-      box-shadow: 1px 1px 4px rgba(53,122,189,0.2);
-    }
-    .book {
-      background: #fff3e6;
-      padding: 1em;
-      border-radius: 10px;
-      box-shadow: 1px 1px 4px rgba(200,150,50,0.2);
-      margin-bottom: 1em;
-    }
-    footer {
-      text-align: center;
-      padding: 1em;
-      background: #4a90e2;
-      color: white;
-      margin-top: 2em;
-      font-size: 0.9em;
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px #ff6f91);
+      }
+      50% {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 20px #ff6f91);
+      }
     }
   </style>
 </head>
 <body>
-  <header>NeuroKids : Le cerveau pour les enfants</header>
+  <header>NeuroKids</header>
+
+  <div class="brain" aria-label="Animation d'un cerveau"></div>
+
+  <div class="welcome-text">
+    Bienvenue sur NeuroKids, le site qui t’explique le cerveau en t’amusant !
+  </div>
+
   <nav>
-    <button onclick="showSection('accueil')">Accueil</button>
     <button onclick="showSection('faits')">Faits amusants</button>
     <button onclick="showSection('activites')">Activités</button>
     <button onclick="showSection('livres')">Petits livres</button>
+    <button onclick="showSection('a-propos')">À propos de moi</button>
   </nav>
+
   <main>
-    <section id="accueil" class="active">
-      <h2>Bienvenue sur NeuroKids !</h2>
-      <p>Salut ! Ici, tu vas découvrir plein de choses amusantes sur ton cerveau. Apprends comment il fonctionne, joue à des jeux, lis des histoires, et deviens un vrai petit neuroscientifique !</p>
-      <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Cerveau cartoon" style="width:150px; display:block; margin:1em auto;" />
-    </section>
-
-    <section id="faits">
+    <section id="faits" style="display:none;">
       <h2>Faits amusants sur le cerveau</h2>
-      <div class="fact">Le cerveau humain contient environ 86 milliards de neurones !</div>
-      <div class="fact">Ton cerveau utilise 20 % de l’énergie totale de ton corps, même s’il ne représente que 2 % de ton poids.</div>
-      <div class="fact">Les rêves arrivent pendant la phase de sommeil paradoxal, quand ton cerveau est très actif.</div>
-      <div class="fact">Les neurones communiquent avec des signaux électriques et chimiques très rapides.</div>
+      <p>Le cerveau humain contient environ 86 milliards de neurones !</p>
+      <p>Ton cerveau utilise 20 % de l’énergie totale de ton corps.</p>
     </section>
 
-    <section id="activites">
-      <h2>Activités à faire</h2>
-      <div class="activity">
-        <strong>Test du réflexe de la main :</strong>
-        <p>Demande à quelqu'un de lâcher un stylo sans te prévenir et essaie de l’attraper avant qu’il ne tombe. C’est ton cerveau qui t’aide à être rapide !</p>
-      </div>
-      <div class="activity">
-        <strong>Coloriage cerveau :</strong>
-        <p>Imprime une image du cerveau et colorie les différentes parties pour mieux les connaître.</p>
-      </div>
-      <div class="activity">
-        <strong>Quiz simple :</strong>
-        <p>Quel organe contrôle ton corps ? (Réponse : le cerveau)</p>
-      </div>
+    <section id="activites" style="display:none;">
+      <h2>Activités</h2>
+      <p>Test du réflexe : essaie d’attraper un objet avant qu’il ne tombe !</p>
     </section>
 
-    <section id="livres">
-      <h2>Petits livres à lire</h2>
-      <div class="book">
-        <h3>La journée de Neurone le neurone curieux</h3>
-        <p>Neurone est un petit neurone qui adore voyager dans le cerveau et découvrir comment tout fonctionne. Aujourd’hui, il va explorer la mémoire et l’apprentissage !</p>
-      </div>
-      <div class="book">
-        <h3>Les aventures de Cora, la cellule gliale</h3>
-        <p>Cora aide les neurones à rester en bonne santé. Suis ses aventures pour comprendre l’importance des cellules gliales dans ton cerveau.</p>
-      </div>
+    <section id="livres" style="display:none;">
+      <h2>Petits livres</h2>
+      <p>La journée de Neurone le curieux...</p>
+    </section>
+
+    <section id="a-propos" style="display:none;">
+      <h2>À propos de moi</h2>
+      <p>Salut ! Je m’appelle Ashu et je suis étudiant en neurosciences.</p>
     </section>
   </main>
-
-  <footer>
-    © 2025 NeuroKids - Site éducatif pour enfants
-  </footer>
 
   <script>
     function showSection(id) {
       const sections = document.querySelectorAll('main section');
-      sections.forEach(sec => {
-        sec.classList.remove('active');
-      });
-      document.getElementById(id).classList.add('active');
+      sections.forEach(s => s.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
     }
   </script>
 </body>
